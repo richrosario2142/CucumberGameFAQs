@@ -3,5 +3,4 @@ Feature: GameFAQs Click Search
 
   Scenario: Validate search bar
     Given User is on the GameFAQs home page
-    When User enters the following in the corresponding fields
-    Then The user sees the name is present in the field
+    Then User searches for "zelda"

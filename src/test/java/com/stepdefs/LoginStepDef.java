@@ -29,21 +29,21 @@ public class LoginStepDef {
         driver.get("https://www.gamefaqs.com");
     }
 
-
-    @When("^User enters the following in the corresponding fields$")
-    public void user_enters_the_following_in_the_corresponding_fields() {
+    @When("^User searches for \"([^\"]*)\"$")
+    public void user_searches_for(String game) {
         HomePage home = new HomePage(driver);
-        home.searchGame("zelda");
-    }
-
-    @Then("^The user sees the name is present in the field$")
-    public void the_user_sees_the_name_is_present_in_the_field() {
-
+        home.searchGame(game);
     }
 
     @After
-    public void cleanUp(){
-        driver.quit();
-        driver = null;
+    public void cleanUp() {
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            driver.quit();
+            driver = null;
+        }
     }
 }
